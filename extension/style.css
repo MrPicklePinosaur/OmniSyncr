@@ -1,1 +1,7 @@
 /* Stylesheet */
+body {
+    min-width: 1005px; /* your desired width */
+    max-width: 100%;
+    position: relative;
+    vertical-align:middle;
+}
