@@ -1,3 +1,12 @@
+
+//on installed
+chrome.runtime.onInstalled.addListener(() => {
+    alert('Thanks for installing =)');
+})
+
+//chrome info
+
+
 console.log('Background Script loaded');
 
 chrome.browserAction.onClicked.addListener(onClicked);
