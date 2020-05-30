@@ -5,7 +5,7 @@ chrome.runtime.onInstalled.addListener(() => {
 })
 
 //chrome info
-
+chrome.identity.getProfileUserInfo({});
 
 console.log('Background Script loaded');
 
