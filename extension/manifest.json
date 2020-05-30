@@ -14,7 +14,12 @@
     },
 
     "permissions": [
-        "http://*/*", "https://*/*"
-    ]
+      "contextMenus",
+      "activeTab"
+    ],
+  "background": {
+    "persistent": true,
+    "scripts": ["js/background.js"]
+  }
 
 }
