@@ -21,13 +21,6 @@ wss.on('connection',function connection(ws){
 
 });
 
-
-
-
-
-
-
-
 //API
 const loginRoutes = require('./routes/login');
 const roomRoutes = require('./routes/rooms');
