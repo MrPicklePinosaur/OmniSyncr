@@ -92,7 +92,15 @@ var waitingOn = null;
 chrome.runtime.onMessage.addListener(internalMessage);
 function internalMessage(info){
     if (info == "started"){
-        console.log("Video has been started, possibly manually");
+        if (!isPlaying){
+            if (isLeader){
+                console.log("Telling everyone to change");
+
+            }else{
+                console.log("Forcing player to stop");
+                videoFunction(".pause()");
+            }
+        }
     }else if (info == "paused"){
         console.log("Video has been ended, possibly manually");
     }else if (waitingOn){
@@ -111,12 +119,13 @@ firebase.initializeApp(config);
 var db = firebase.firestore();
 var values = {
     "LastUpdate" : null,
-    "Party Leader" : null,
+    "PartyLeader" : null,
     "Status" : null,
     "Watched" : null
 }
 var isLoaded = false;
 var isPlaying = false;
+var isLeader = false;
 
 function lobbyCreated(lobbyId, username){
     console.log("running?")
@@ -138,16 +147,20 @@ function lobbyCreated(lobbyId, username){
                                     if (!isLoaded){
                                         console.log("Starting Video!");
                                         videoSetup();
-                                        videoFunction(".load()");
                                         isLoaded = true;
+                                        videoFunction(".load()");
                                     }
-                                    
+                                    isPlaying = true;                                    
                                     console.log("Playing Video!");
                                     videoFunction(".currentTime = 0") //.format(newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000));
                                     videoFunction(".play()");
-                                    isPlaying = true;
                                     
                                     console.log("Enjoy watching?", newItems["Watched"] + (new Date().getTime()) - newItems["LastUpdate"]);
+                                }
+                            }else if (key == "PartyLeader"){
+                                if (username == newItems[key]){
+                                    isLeader = true;
+                                    console.log("You have become the Leader!")
                                 }
                             }
                             values[key] = newItems[key];
