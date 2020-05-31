@@ -33,7 +33,7 @@ router.get("/create",async (req,res)=>{
     }).catch(err =>{
         res.json({message:err});
     });
-    console.log("firebase");
+    console.log(req.body.name);
     var config = {
         databaseURL: "https://masseyhacks6.firebaseio.com",
         projectId: "masseyhacks6"
