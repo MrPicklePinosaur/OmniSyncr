@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         console.log(request.state);
     } else if (evt_type == "createRoom") {
         console.log(request.payload.lobbyId);
-        //lobbyCreated(request.payload.lobbyId,request.payload.username);
+        lobbyCreated(request.payload.lobbyId, request.payload.username);
     } else {
         console.log(`invalid event type: ${evt_type}`);
     }
@@ -65,48 +65,79 @@ function videoSetup(){
             }
         }
     `;
+    
+    try{
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.executeScript(tabs[0].id, {code: queueCode});
+        });
 
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.executeScript(tabs[0].id, {code: queueCode});
-    });
+    }catch(error){}
 
 }
 
 // sends a command to the video player
 function videoFunction(order){ // .load(), .play(), .pause(), .currentTime = x seconds
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.executeScript(tabs[0].id, {code: "storedVideo{0};".format(order)});
-    });
+    try {
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.executeScript(tabs[0].id, {code: "storedVideo{0};".format(order)});
+        });
+    }catch(error){}
 }
 
 // posts a message for us to get later
 function videoProperty(info){
-    waitingOn = info;
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.executeScript(tabs[0].id, {code: "chrome.runtime.sendMessage(storedVideo{0});".format(info)});
-    });
+    try{
+        waitingOn = info;
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.executeScript(tabs[0].id, {code: "chrome.runtime.sendMessage(storedVideo{0});".format(info)});
+        });
+    }catch(error){}   
 }
 
 // listens for messages sent from videoProperty()
 var waitingOn = null;
+var waitedCommand = null;
 chrome.runtime.onMessage.addListener(internalMessage);
 function internalMessage(info){
-    if (info == "started"){
-        if (!isPlaying){
-            if (isLeader){
-                console.log("Telling everyone to change");
-                178912012
-            }else{
-                console.log("Forcing player to stop");
-                videoFunction(".pause()");
+    try{
+        console.log("Internal message", info, isPlaying, isLeader);
+        if (info == "started"){
+            if (!isPlaying){
+                if (isLeader){
+                    console.log("Will try to tell to play");
+                    waitedCommand = "Playing";
+                    videoProperty(".currentTime")
+
+                }else{
+                    console.log("Forcing player to stop");
+                    videoFunction(".pause()");
+                }
             }
+        }else if (info == "paused"){
+            console.log("Video has been ended, possibly manually");
+            if (isPlaying && isLeader){
+                videoProperty(".currentTime")
+                waitedCommand = "Paused";
+            }
+
+        }else if (waitingOn){
+            console.log(waitingOn, info);
+            db.collection("Rooms").doc(toString(values["ID"])).set({        
+                LastUpdate: new Date().getTime(),
+                PartyLeader: "Noor",
+                Status: waitedCommand,
+                Watched: info,
+                ID: values["ID"]
+            });
+
+            waitedCommand = null;
+            waitingOn = null;
+            console.log("All done");
         }
-    }else if (info == "paused"){
-        console.log("Video has been ended, possibly manually");
-    }else if (waitingOn){
-        console.log(waitingOn, info);
-        waitingOn = null;
+    }catch(e){
+        console.log(e);
     }
+    
 }
 
 // ======================================== Firebase functions =======================================
@@ -118,6 +149,7 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.firestore();
 var values = {
+    "ID" : null,
     "LastUpdate" : null,
     "PartyLeader" : null,
     "Status" : null,
@@ -161,6 +193,10 @@ function lobbyCreated(lobbyId, username){
                                 if (username == newItems[key]){
                                     isLeader = true;
                                     console.log("You have become the Leader!")
+                                    if (!isLoaded){
+                                        isLoaded = true;
+                                        videoSetup();
+                                    }
                                 }
                             }
                             values[key] = newItems[key];
@@ -176,9 +212,6 @@ function lobbyCreated(lobbyId, username){
 }
 
 // ======================================== Test Code =======================================
-console.log("Started");
-lobbyCreated(178912012, "Noor");
-
 function make(){
     db.collection("Rooms").doc("178912012").set({        
         LastUpdate: new Date().getTime(),
@@ -209,7 +242,7 @@ chrome.contextMenus.onClicked.addListener(contextMenuHandler);
 // gets to call the other functions
 var alreadyReady = false;
 function contextMenuHandler(info, tab){
-    
+    lobbyCreated(178912012, "Noor");
 
     /*if (!alreadyReady){
         videoSetup();
@@ -224,3 +257,5 @@ function contextMenuHandler(info, tab){
     
     //videoProperty(".currentTime")
 }
+
+console.log("Started");
