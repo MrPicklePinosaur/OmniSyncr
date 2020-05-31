@@ -13,6 +13,9 @@ function makeId(length) {
     }
     return result;
 }
+app.get('/',(req,res) =>{
+    res.send("We are on rooms");
+});
 router.get("/create",(req,res)=>{
     const room = new Room(
         {
