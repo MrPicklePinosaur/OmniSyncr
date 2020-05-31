@@ -1,4 +1,5 @@
 // test stuff
+console.log("Started")
 var contextMenus = {};
 contextMenus.createCounterString = 
     chrome.contextMenus.create(
