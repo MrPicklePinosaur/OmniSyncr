@@ -3,26 +3,32 @@
 
     <div v-if="room_info!=null">
 
-        <p>Room Code: {{room_info.code}}</p>
-
+        <p style="padding-left:65px" >Room Code: {{room_info.code}}</p>
         <!--div>
-            <p>currently watching:</p>
-            <p v-if="currentlyWatching!=null" v-text="currentlyWatching"></p>
-            <p v-else>Nothin :(</p>
-        </div-->
+                    <p>currently watching:</p>
+                    <p v-if="currentlyWatching!=null" v-text="currentlyWatching"></p>
+                    <p v-else>Nothin :(</p>
+                </div-->
 
 
-        <div class="card">
-            <ul class="list-group list-group-flush">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
 
-                <li class="list-group-item" v-for="(member,i) in members" v-bind:key="i">{{member}}</li>
+                        <li class="list-group-item" v-for="(member,i) in members" v-bind:key="i">{{member}}</li>
 
-            </ul>
+                    </ul>
+                </div>
+
+
+        <div style="padding-left:85px">
+         <button type="button" class="btn btn-warning" @click="leaveRoom">Leave room</button>
         </div>
 
-        <button type="button" class="btn btn-warning" @click="leaveRoom">Leave room</button>
+
+
 
     </div>
+
 
     <div v-else>
         <p>Whoops, you are not in a room</p>
