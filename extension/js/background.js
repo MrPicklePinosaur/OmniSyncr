@@ -1,5 +1,5 @@
+// test stuff
 var contextMenus = {};
-
 contextMenus.createCounterString = 
     chrome.contextMenus.create(
         {"title":"play",
@@ -11,10 +11,26 @@ contextMenus.createCounterString =
             }
         }
     );
-
 chrome.contextMenus.onClicked.addListener(contextMenuHandler);
 
-if (!String.prototype.format) { // string formatting stuff
+// gets to call the other functions
+var alreadyReady = false;
+function contextMenuHandler(info, tab){
+    if (!alreadyReady){
+        videoSetup();
+        alreadyReady = true
+    }
+
+    //videoFunction(".load()");
+    //videoFunction(".play()");
+    //videoFunction(".pause()");
+    //videoFunction(".currentTime = 95"); // in seconds
+    
+    //videoProperty(".currentTime")
+}
+
+// ======================================== global functions =======================================
+if (!String.prototype.format) { 
     String.prototype.format = function(...args) {
       return this.replace(/(\{\d+\})/g, function(a) {
         return args[+(a.substr(1, a.length - 2)) || 0];
@@ -22,6 +38,7 @@ if (!String.prototype.format) { // string formatting stuff
     };
 }
 
+// ======================================== video functions =======================================
 function videoSetup(){
     var queueCode = `
         var storedVideo = null;
@@ -94,18 +111,4 @@ function internalMessage(info){
     }
 }
 
-// gets to call the other functions
-var alreadyReady = false;
-function contextMenuHandler(info, tab){
-    if (!alreadyReady){
-        videoSetup();
-        alreadyReady = true
-    }
-
-    //videoFunction(".load()");
-    videoFunction(".play()");
-    //videoFunction(".pause()");
-    //videoFunction(".currentTime = 95"); // in seconds
-    
-    //videoProperty(".currentTime")
-}
+// ======================================== socket functions =======================================
