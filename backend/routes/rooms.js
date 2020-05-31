@@ -69,9 +69,12 @@ router.post("/getRoom",async (req,res)=>{
 });
 router.post("/join",async (req,res)=>{
     console.log(req.body);
+    Room.update(
+        { code: req.body.code },
+        { $push: { members: req.body.name } },
+    );
     const r = Room.findOne({code:req.body.code});
-    r.members.push(req.body.name);
-    r.save();
+
     r.exec(function (err, room) {
         if (err) return res.json({});
         res.json(room);
