@@ -42,7 +42,7 @@ router.post("/create",async (req,res)=>{
         firebase.initializeApp(config);
     }
     var db = firebase.firestore();
-    const id=Math.floor(Math.Random()*1000000);
+    const id=Math.floor(Math.random()*1000000);
     console.log(id);
     db.collection("Rooms").doc(id.toString()).set({
         LastUpdate: new Date().getTime(),
