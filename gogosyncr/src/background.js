@@ -1,7 +1,6 @@
 // test stuff
 console.log("Started")
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-
     var evt_type = request.event;
 
     if (evt_type == "onload") {
@@ -133,6 +132,7 @@ function lobbyCreated(lobbyId, username){
                                 if (newItems[key] == "Paused" && isPlaying){
                                     console.log("Video Stopped!");
                                     videoFunction(".pause()");
+
                                 }else if (newItems[key] == "Playing"){
                                     if (!isLoaded){
                                         console.log("Starting Video!");
@@ -142,8 +142,9 @@ function lobbyCreated(lobbyId, username){
                                     }
                                     
                                     console.log("Playing Video!");
-                                    videoFunction(".currentTime = {0}".format(newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000));
+                                    videoFunction(".currentTime = 0") //.format(newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000));
                                     videoFunction(".play()");
+                                    isPlaying = true;
                                     
                                     console.log("Enjoy watching?", newItems["Watched"] + (new Date().getTime()) - newItems["LastUpdate"]);
                                 }
