@@ -47,7 +47,7 @@ router.post("/create",async (req,res)=>{
         PartyLeader: req.body.name,
         Status: "Paused",
         Watched: 0,
-        ID: Math.random()*100000
+        ID: ~~Math.random()*100000
     });
 
 
