@@ -200,10 +200,10 @@ function lobbyCreated(lobbyId, username){
                                     }
                                     isPlaying = true;                                    
                                     console.log("Playing Video!");
-                                    videoFunction(".currentTime = {0}".format(newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000));
+                                    videoFunction(".currentTime = {0}".format(newItems["Watched"])); //+ ((new Date().getTime()) - newItems["LastUpdate"])/1000));
                                     videoFunction(".play()");
                                     
-                                    console.log("Enjoy watching?", newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000) ;
+                                    console.log("Enjoy watching?", newItems["Watched"]); //+ ((new Date().getTime()) - newItems["LastUpdate"])/1000) ;
                                 }
                             }else if (key == "PartyLeader"){
                                 if (username == newItems[key]){
