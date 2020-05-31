@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const router = express.Router();
 const Room = require('../models/Room');
+const firebase =  require('firebase');
 
 function makeId(length) {
     var result           = '';
@@ -27,6 +28,25 @@ router.get("/create",(req,res)=>{
     }).catch(err =>{
         res.json({message:err});
     });
+    var config = {
+        databaseURL: "https://masseyhacks6.firebaseio.com",
+        projectId: "masseyhacks6"
+    };
+    firebase.initializeApp(config);
+    var db = firebase.firestore();
+    db.collection("Rooms").doc("Any ID").set({
+        LastUpdate: new Date().getTime(),
+        Members: [
+            "Nithin",
+            "Daniel",
+            "Noor"
+        ],
+        PartyLeader: "Noor",
+        Status: "Paused",
+        Watched: 0,
+        Connected: 0,
+    });
+
 
 });
 router.post("/join",(req,res)=>{
@@ -38,8 +58,5 @@ router.post("/join",(req,res)=>{
         res.json(room);
     });
 });
-
-router.post("/getRoom")
-
 
 module.exports = router;
