@@ -95,7 +95,7 @@ function internalMessage(info){
         if (!isPlaying){
             if (isLeader){
                 console.log("Telling everyone to change");
-
+                178912012
             }else{
                 console.log("Forcing player to stop");
                 videoFunction(".pause()");
@@ -155,7 +155,7 @@ function lobbyCreated(lobbyId, username){
                                     videoFunction(".currentTime = 0") //.format(newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000));
                                     videoFunction(".play()");
                                     
-                                    console.log("Enjoy watching?", newItems["Watched"] + (new Date().getTime()) - newItems["LastUpdate"]);
+                                    console.log("Enjoy watching?", newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000) ;
                                 }
                             }else if (key == "PartyLeader"){
                                 if (username == newItems[key]){
@@ -171,7 +171,7 @@ function lobbyCreated(lobbyId, username){
     }catch(e){
         console.log(e);
     }
-    
+
     console.log("Room has been setup")
 }
 
@@ -180,7 +180,7 @@ console.log("Started");
 lobbyCreated(178912012, "Noor");
 
 function make(){
-    db.collection("Rooms").add({          
+    db.collection("Rooms").doc("178912012").set({        
         LastUpdate: new Date().getTime(),
         PartyLeader: "Noor",
         Status: "Paused",
@@ -188,6 +188,7 @@ function make(){
         ID: 178912012
     });
 }
+
 //make();
 
 var contextMenus = {};
