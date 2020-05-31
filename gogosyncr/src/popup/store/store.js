@@ -65,6 +65,7 @@ export const store = new Vuex.Store({
 
                 if (repsonse != null) {
                     context.commit('setRoom', response);
+                    //also redirect to room page
                 } else {
                     //tell user that its an invalid room
                 }

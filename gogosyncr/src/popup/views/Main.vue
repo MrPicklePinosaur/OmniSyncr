@@ -28,8 +28,8 @@ export default {
         onJoinRoomButtonSubmit: function() {
             console.log(`Trying to join room with code ${this.joinRoomCode}`);
             //dispatch the ting
-
-            //redirect to room page
+            this.$store.dispatch('joinRoom',{"code": this.joinRoomCode});
+            
         },
 
     },

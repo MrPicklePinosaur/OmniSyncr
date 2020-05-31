@@ -1,5 +1,28 @@
 // test stuff
 console.log("Started")
+//Daniel shitzo
+
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+
+    var evt_type = request.event;
+
+    if (evt_type == "onload") {
+        //send stored state back to popup
+        console.log('LOADED POPUP');
+        sendResponse({"message": "hello popup!"});
+    } else if (evt_type == "onunload") {
+        
+        console.log(request.state);
+    } else {
+        console.log(`invalid event type: ${evt_type}`);
+    }
+    
+
+});
+
+
+//Daniel shitzo end
 var contextMenus = {};
 contextMenus.createCounterString = 
     chrome.contextMenus.create(
