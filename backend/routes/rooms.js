@@ -37,11 +37,8 @@ router.get("/create",(req,res)=>{
     db.collection("Rooms").doc("Any ID").set({
         LastUpdate: new Date().getTime(),
         Members: [
-            "Nithin",
-            "Daniel",
-            "Noor"
         ],
-        PartyLeader: "Noor",
+        PartyLeader: req.body.name,
         Status: "Paused",
         Watched: 0,
         Connected: 0,
