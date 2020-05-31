@@ -38,7 +38,9 @@ router.get("/create",async (req,res)=>{
         databaseURL: "https://masseyhacks6.firebaseio.com",
         projectId: "masseyhacks6"
     };
-    firebase.initializeApp(config);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
     var db = firebase.firestore();
     db.collection("Rooms").add({
         LastUpdate: new Date().getTime(),
