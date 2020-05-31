@@ -169,7 +169,8 @@ var values = {
     "LastUpdate" : null,
     "PartyLeader" : null,
     "Status" : null,
-    "Watched" : null
+    "Watched" : null,
+    "Link": null
 }
 var isLoaded = false;
 var isPlaying = false;
@@ -205,10 +206,26 @@ function lobbyCreated(lobbyId, username){
                                     
                                     console.log("Enjoy watching?", newItems["Watched"]); //+ ((new Date().getTime()) - newItems["LastUpdate"])/1000) ;
                                 }
+                            }else if (key == "Link" && !isLeader && newItems[key] != "blank"){
+                                // open that link
+                                console.log("Going to new url!")
+                                chrome.tabs.create({"url": newItems[key]});
+                            
                             }else if (key == "PartyLeader"){
                                 if (username == newItems[key]){
                                     isLeader = true;
-                                    console.log("You have become the Leader!")
+                                    console.log("You have become the Leader!");
+
+                                    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+                                        let url = tabs[0].url;
+                                        var room = db.collection("Rooms").doc(newItems["ID"].toString());
+                                        console.log("Making url change");
+                                        room.update({
+                                            Link : url
+                                        });
+                                        console.log("Done");
+                                    });
+
                                     if (!isLoaded){
                                         isLoaded = true;
                                         videoSetup();
@@ -234,7 +251,8 @@ function make(){
         PartyLeader: "Noor",
         Status: "Paused",
         Watched: 0,
-        ID: 178912012
+        ID: 178912012,
+        Link : "blank"
     });
 }
 
@@ -258,7 +276,9 @@ chrome.contextMenus.onClicked.addListener(contextMenuHandler);
 // gets to call the other functions
 var alreadyReady = false;
 function contextMenuHandler(info, tab){
-    lobbyCreated(178912012, "Noor");
+    lobbyCreated(178912012, "Other Man");
+    
+    
 
     /*if (!alreadyReady){
         videoSetup();
@@ -275,3 +295,4 @@ function contextMenuHandler(info, tab){
 }
 
 console.log("Started");
+
