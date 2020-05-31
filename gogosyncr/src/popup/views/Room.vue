@@ -6,7 +6,8 @@
 
         <div>
             <p>currently watching:</p>
-            <h4 v-text="currentlyWatching"></h4>
+            <p v-if="currentlyWatching!=null" v-text="currentlyWatching"></p>
+            <p v-else>Nothin :(</p>
         </div>
 
 
@@ -17,7 +18,6 @@
 
             </ul>
         </div>
-
 
         <button type="button" class="btn btn-warning">Leave room</button>
 
@@ -53,8 +53,13 @@ export default {
     },
 
     methods: {
+
         leaveRoom: function() {
-            
+
+            //send request
+
+            //redirect
+
         }
     }
 }

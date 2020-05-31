@@ -2,26 +2,10 @@
     <div>
         <h1>Main</h1>
 
-        <button type="button" class="btn btn-primary">Create Room</button>
+        <button type="button" class="btn btn-primary" @click="creatRoom">Create Room</button>
         <br>
-
-        <b-form @sumbit="onSubmit" @reset="onReset">
-            <b-form-group
-                id="join-room-form-group"
-            >
-                <b-form-input
-                    id="join-room-field"
-                    v-model="joinRoomCode"
-                    type="text"
-                    required
-                    placeholder="Room Code"
-                ></b-form-input>
-            
-            </b-form-group>
-
-
-            <b-button type="submit" variant="primary">Join Room</b-button>
-        </b-form>
+        <button type="button" class="btn btn-primary" @click="onJoinRoomButtonSubmit">Join Room</button>
+        <input type="text" class="form-control" placeholder="room code" v-model="joinRoomCode">
         
     </div>
 </template>
@@ -37,14 +21,23 @@ export default {
     },
 
     methods: {
-        onSubmit: function(evt) {
-            evt.preventDefault();
-            console.log(`Trying to join room with code ${this.joinRoomCode}`);
+        createRoom: function() {
+            
+            //send request - save room info
+
+            //redirect to room page
         },
-        onReset: function(evt) {
-            evt.preventDefault();
-            this.joinRoomCode = ''
-        }
+
+        onJoinRoomButtonSubmit: function() {
+            console.log(`Trying to join room with code ${this.joinRoomCode}`);
+
+            //send request
+
+            //check if room was successfully joined
+
+            //redirect to room page
+        },
+
     },
 }
 </script>
