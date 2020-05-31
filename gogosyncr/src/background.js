@@ -81,8 +81,10 @@ function internalMessage(info){
 }
 
 // ======================================== Firebase functions =======================================
+firebase.initializeApp(config);
+var db = firebase.firestore();
 function lobbyCreated(id){
-
+    
 }
 
 
