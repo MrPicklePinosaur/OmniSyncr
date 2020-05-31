@@ -15,6 +15,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 
+window.axios = require('axios');
+
 const router = new VueRouter({
 	
 	routes: [
@@ -24,6 +26,12 @@ const router = new VueRouter({
 		{ path: '*', component: NotFound }
 	],
 	
+	mounted: function() {
+		console.log('mounted');
+		axios.get('https://jsonplaceholder.typicode.com/posts')
+			.then(response => console.log(response));
+	
+	},
 	/*
 	routes: [
 		{
@@ -49,7 +57,6 @@ const router = new VueRouter({
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
   
   data: {
 

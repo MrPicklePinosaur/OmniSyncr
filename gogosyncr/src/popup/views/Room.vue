@@ -8,6 +8,8 @@
             <li v-for="(member,i) in members" v-bind:key="i">{{member.name}}</li>
         </ul>
 
+        <button type="button" class="btn btn-warning">Leave room</button>
+
     </div>
 </template>
 
@@ -28,9 +30,11 @@ export default {
             members: [
                 {
                     name: 'Nithin',
+                    privilege: 'viewer',
                 },
                 {
                     name: 'Noor',
+                    privilege: 'owner',
                 },
             ],
         }
