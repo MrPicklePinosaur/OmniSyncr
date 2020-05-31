@@ -17,7 +17,7 @@ function makeId(length) {
 router.get('/',(req,res) =>{
     res.send("We are on rooms");
 });
-router.get("/create",async (req,res)=>{
+router.post("/create",async (req,res)=>{
     const code = makeId(6);
     const room = new Room(
         {
@@ -47,8 +47,8 @@ router.get("/create",async (req,res)=>{
         PartyLeader: req.body.name,
         Status: "Paused",
         Watched: 0,
-        ID: Math.random()*100000
-    });
+        ID: Math.floor(Math.random() * 1000000)
+});
 
 
 });
