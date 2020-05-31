@@ -1,12 +1,5 @@
-import "popup/firebase-app.js"
-import "popup/firebase-auth.js"
-import "popup/firebase-firestore.js"
-
-
 // test stuff
 console.log("Started")
-//Daniel shitzo
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     var evt_type = request.event;
@@ -23,12 +16,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     } else {
         console.log(`invalid event type: ${evt_type}`);
     }
-    
-
 });
-
-
-//Daniel shitzo end
 
 
 // ======================================== global functions =======================================
