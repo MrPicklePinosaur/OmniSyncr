@@ -37,18 +37,7 @@ export default {
 
     data: function() {
         return {
-            roomCode: 'Room code',
-            currentlyWatching: 'YESTERDAY WO UTATTE EPISODE 9 ENGLISH SUBBED',
-            members: [
-                {
-                    name: 'Nithin',
-                    privilege: 'viewer',
-                },
-                {
-                    name: 'Noor',
-                    privilege: 'owner',
-                },
-            ],
+            
         }
     },
 
