@@ -13,7 +13,8 @@ function makeId(length) {
     }
     return result;
 }
-app.get('/',(req,res) =>{
+
+router.get('/',(req,res) =>{
     res.send("We are on rooms");
 });
 router.get("/create",(req,res)=>{
