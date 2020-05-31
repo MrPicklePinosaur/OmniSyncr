@@ -57,7 +57,7 @@ router.post("/join",async (req,res)=>{
     const r = Room.findOne({code:req.body.code});
 
     r.exec(function (err, room) {
-        if (err) return handleError(err);
+        if (err) return res.json({});
         res.json(room);
     });
 });
