@@ -2,7 +2,11 @@
     <div>
 
         <input type="text" class="form-control" placeholder="username" v-model="nameField">
-        <button type="button" class="btn btn-primary" @click="onCreateAccountButtonClicked">Create Account!</button>
+        <div style="padding-left:65px;padding-top:20px">
+            <button type="button" class="btn btn-primary" @click="onCreateAccountButtonClicked">Create Account!</button>
+
+        </div>
+
 
     </div>
 </template>
