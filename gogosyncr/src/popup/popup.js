@@ -69,6 +69,13 @@ window.onload = function() {
 
 } 
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+	var evt_type = request.event;
+	if (evt_type == "onWriteState") {
+		store.commit('readState',request.state);
+	}
+}
+
 /*
 //when popup window closes, save current state on background.js
 window.onunload = function() {

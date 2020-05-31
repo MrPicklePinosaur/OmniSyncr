@@ -1,7 +1,6 @@
 <template>
     <div>
 
-        <p v-text="nameField"></p>
         <input type="text" class="form-control" placeholder="username" v-model="nameField">
         <button type="button" class="btn btn-primary" @click="onCreateAccountButtonClicked">Create Account!</button>
 
