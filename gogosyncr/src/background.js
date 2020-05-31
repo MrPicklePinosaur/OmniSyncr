@@ -1,35 +1,3 @@
-// test stuff
-console.log("Started")
-var contextMenus = {};
-contextMenus.createCounterString = 
-    chrome.contextMenus.create(
-        {"title":"play",
-        "contexts" : ["all"]
-        },
-        function (){
-            if(chrome.runtime.lastError){
-                console.error(chrome.runtime.lastError.message);
-            }
-        }
-    );
-chrome.contextMenus.onClicked.addListener(contextMenuHandler);
-
-// gets to call the other functions
-var alreadyReady = false;
-function contextMenuHandler(info, tab){
-    if (!alreadyReady){
-        videoSetup();
-        alreadyReady = true
-    }
-
-    //videoFunction(".load()");
-    //videoFunction(".play()");
-    //videoFunction(".pause()");
-    //videoFunction(".currentTime = 95"); // in seconds
-    
-    //videoProperty(".currentTime")
-}
-
 // ======================================== global functions =======================================
 if (!String.prototype.format) { 
     String.prototype.format = function(...args) {
@@ -112,4 +80,65 @@ function internalMessage(info){
     }
 }
 
-// ======================================== socket functions =======================================
+// ======================================== Firebase functions =======================================
+function lobbyCreated(id){
+
+}
+
+
+// ======================================== Test Code =======================================
+console.log("Started");
+function make(){
+    var config = {
+        databaseURL: "https://masseyhacks6.firebaseio.com",
+        projectId: "masseyhacks6"
+    };
+    firebase.initializeApp(config);
+    var db = firebase.firestore();
+    db.collection("Rooms").doc("Any ID").set({
+        LastUpdate: new Date().getTime(),
+        Members: [
+            "Nithin",
+            "Daniel",
+            "Noor"
+        ],
+        PartyLeader: "Noor",
+        Status: "Paused",
+        Watched: 0,
+        Connected: 0,
+    });    
+}
+
+var contextMenus = {};
+contextMenus.createCounterString = 
+    chrome.contextMenus.create(
+        {"title":"play",
+        "contexts" : ["all"],
+        "id": "pleaseworkman"
+        },
+        function (){
+            if(chrome.runtime.lastError){
+                console.error(chrome.runtime.lastError.message);
+            }
+        }
+    );
+chrome.contextMenus.onClicked.addListener(contextMenuHandler);
+
+// gets to call the other functions
+var alreadyReady = false;
+function contextMenuHandler(info, tab){
+    
+
+    /*if (!alreadyReady){
+        videoSetup();
+        alreadyReady = true
+    }
+    */
+
+    //videoFunction(".load()");
+    //videoFunction(".play()");
+    //videoFunction(".pause()");
+    //videoFunction(".currentTime = 95"); // in seconds
+    
+    //videoProperty(".currentTime")
+}
