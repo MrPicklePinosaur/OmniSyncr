@@ -21,7 +21,7 @@ export default {
     
     methods: {
         testRequest: function() {
-            axios.get('localhost:3000/rooms/create')
+            axios.get('http:localhost:3000/rooms/create')
                 .then(response => this.data = response);
         }
     }
