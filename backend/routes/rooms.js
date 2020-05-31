@@ -17,7 +17,7 @@ function makeId(length) {
 router.get('/',(req,res) =>{
     res.send("We are on rooms");
 });
-router.get("/create",(req,res)=>{
+router.get("/create",async (req,res)=>{
     const code = makeId(6);
     const room = new Room(
         {
@@ -28,12 +28,10 @@ router.get("/create",(req,res)=>{
 
         }
     );
-    const savedRoom = room.save();
-    res.json({
-        code:code,
-            dbCode:"ahgh",
-            owner:req.body.name,
-            ready:false
+    const savedRoom = room.save().then(data =>{
+        res.json(data);
+    }).catch(err =>{
+        res.json({message:err});
     });
 
     // var config = {
@@ -54,7 +52,7 @@ router.get("/create",(req,res)=>{
 
 
 });
-router.post("/join",(req,res)=>{
+router.post("/join",async (req,res)=>{
     console.log(req.body);
     const r = Room.findOne({code:req.body.code});
 
