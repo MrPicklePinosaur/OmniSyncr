@@ -71,8 +71,10 @@ router.post("/join",async (req,res)=>{
     console.log(req.body);
     Room.update(
         { code: req.body.code },
-        { $push: { members:req.body.name } },
+        { $push: { members: req.body.name } },
     );
+    const r = Room.findOne({code:req.body.code});
+
     r.exec(function (err, room) {
         if (err) return res.json({});
         res.json(room);
