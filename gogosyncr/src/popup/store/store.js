@@ -109,6 +109,29 @@ export const store = new Vuex.Store({
             });
         },
 
+        refreshRoom: (context, payload) => { 
+
+            axios.post(context.state.server_url+"/rooms/getroom", {
+                "code": payload.code
+            })
+            .then(response => {
+                var data = response.data;
+
+                context.commit('setRoom', data);
+                //also redirect to room page
+
+                chrome.runtime.sendMessage({
+                    "event": "createRoom",
+                    "payload": {
+                        "lobbyId": context.state.room_info.dbCode,
+                        "username": context.state.username
+                    }
+                });
+                
+
+            });
+        },
+
         //leaveRoom:
 
     }

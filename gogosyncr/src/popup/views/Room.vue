@@ -20,8 +20,9 @@
                 </div>
 
 
-        <div style="padding-left:85px">
-         <button type="button" class="btn btn-warning" @click="leaveRoom">Leave room</button>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary" @click="refreshRoom">Refresh</button>
+            <button type="button" class="btn btn-warning" @click="leaveRoom">Leave room</button>
         </div>
 
 
@@ -71,6 +72,10 @@ export default {
 
             //redirect
 
+        },
+
+        refreshRoom: function() {
+            this.$store.dispatch('refreshRoom',{"code": this.$store.state.room_info.lobbyId});
         }
     }
 }
