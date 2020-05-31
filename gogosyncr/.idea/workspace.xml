@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ebe106c6-07ce-4ec6-adb3-e9673375ee03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/gogosyncr.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gogosyncr/src/popup/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/firebase-app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/firebase-auth.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/firebase-firestore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gogosyncr/src/popup/views/Main.vue" afterDir="false" />
+    <list default="true" id="a9012da2-1902-496a-b9c6-02b415adaee4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gogosyncr.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/popup/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/popup/firebase-app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/popup/firebase-auth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/popup/firebase-firestore.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/popup/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup/views/Main.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/popup/views/Room.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup/views/Room.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,33 +30,15 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="$PROJECT_DIR$/.idea" />
-      </set>
-    </option>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
-  <component name="ProjectId" id="1cdlFbetG2O7TdEggPHch5665VA" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1cfY3JqnaqNYWzDDmxCcau0DEXw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -67,7 +50,6 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -91,15 +73,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ebe106c6-07ce-4ec6-adb3-e9673375ee03" name="Default Changelist" comment="" />
-      <created>1590866249517</created>
+      <changelist id="a9012da2-1902-496a-b9c6-02b415adaee4" name="Default Changelist" comment="" />
+      <created>1590920913400</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1590866249517</updated>
-      <workItem from="1590866257162" duration="24818000" />
-      <workItem from="1590915110504" duration="174000" />
-      <workItem from="1590915677281" duration="136000" />
-      <workItem from="1590915832150" duration="5142000" />
+      <updated>1590920913400</updated>
+      <workItem from="1590920914711" duration="4065000" />
     </task>
     <servers />
   </component>
@@ -111,15 +90,10 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
