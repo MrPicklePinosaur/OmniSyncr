@@ -25,7 +25,8 @@ router.post("/create",async (req,res)=>{
             code:code,
             dbCode:id,
             owner:req.body.name,
-            ready:false
+            ready:false,
+            members:[req.body.name]
 
         }
     );
@@ -54,11 +55,23 @@ router.post("/create",async (req,res)=>{
     });
 
 
+
+});
+router.post("/getRoom",async (req,res)=>{
+    const r = Room.findOne({code:req.body.code});
+    r.exec(function (err, room) {
+        if (err) return res.json({});
+        res.json(room);
+    });
+
+
+
 });
 router.post("/join",async (req,res)=>{
     console.log(req.body);
     const r = Room.findOne({code:req.body.code});
-
+    r.members.push(req.body.name);
+    r.save();
     r.exec(function (err, room) {
         if (err) return res.json({});
         res.json(room);
