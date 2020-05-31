@@ -13,9 +13,9 @@
   },
   "background": {
     "scripts": [
-      "firebase-app.js", 
-      "firebase-auth.js", 
-      "firebase-firestore.js",
+      "popup/firebase-app.js",
+      "popup/firebase-auth.js",
+      "popup/firebase-firestore.js",
       "background.js"
     ],
     "persistent" : false

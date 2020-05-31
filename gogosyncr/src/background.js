@@ -1,8 +1,6 @@
 
 // test stuff
 console.log("Started")
-//Daniel shitzo
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     var evt_type = request.event;
@@ -19,12 +17,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     } else {
         console.log(`invalid event type: ${evt_type}`);
     }
-    
-
 });
-
-
-//Daniel shitzo end
 
 
 // ======================================== global functions =======================================
@@ -117,31 +110,71 @@ var config = {
 
 firebase.initializeApp(config);
 var db = firebase.firestore();
+var values = {
+    "LastUpdate" : null,
+    "Party Leader" : null,
+    "Status" : null,
+    "Watched" : null
+}
+var isLoaded = false;
+var isPlaying = false;
+
 function lobbyCreated(lobbyId, username){
-    db.collection("Rooms").doc(toString(lobbyId))
-    .onSnapshot(function(doc) {
-        console.log("Current data: ", doc.data());
-    });
+    console.log("running?")
+    try{
+        db.collection("Rooms").where("ID", "==", lobbyId)
+        .onSnapshot(function(snapshot) {
+                snapshot.docChanges().forEach(function(change) {
+                    var newItems = change.doc.data();
+                    console.log("Something changed")
+                    for (var key in values){
+                        if (values[key] != newItems[key]){
+                            console.log("Changed", key, newItems[key]);
+                            if (key == "Status"){ // change where we are at
+                                if (newItems[key] == "Paused" && isPlaying){
+                                    console.log("Video Stopped!");
+                                    videoFunction(".pause()");
+                                }else if (newItems[key] == "Playing"){
+                                    if (!isLoaded){
+                                        console.log("Starting Video!");
+                                        videoSetup();
+                                        videoFunction(".load()");
+                                        isLoaded = true;
+                                    }
+                                    
+                                    console.log("Playing Video!");
+                                    videoFunction(".currentTime = {0}".format(newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000));
+                                    videoFunction(".play()");
+                                    
+                                    console.log("Enjoy watching?", newItems["Watched"] + (new Date().getTime()) - newItems["LastUpdate"]);
+                                }
+                            }
+                            values[key] = newItems[key];
+                        }
+                    }
+                })
+            })
+    }catch(e){
+        console.log(e);
+    }
+    
+    console.log("Room has been setup")
 }
 
 // ======================================== Test Code =======================================
 console.log("Started");
-lobbyCreated("Any ID", "Noor");
+lobbyCreated(178912012, "Noor");
 
 function make(){
-    db.collection("Rooms").doc("Any ID").set({
+    db.collection("Rooms").add({          
         LastUpdate: new Date().getTime(),
-        Members: [
-            "Nithin",
-            "Daniel",
-            "Noor"
-        ],
         PartyLeader: "Noor",
         Status: "Paused",
         Watched: 0,
-        Connected: 0,
-    });    
+        ID: 178912012
+    });
 }
+//make();
 
 var contextMenus = {};
 contextMenus.createCounterString = 
