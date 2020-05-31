@@ -18,9 +18,10 @@ router.get('/',(req,res) =>{
     res.send("We are on rooms");
 });
 router.get("/create",(req,res)=>{
+    const code = makeId(6);
     const room = new Room(
         {
-            code:makeId(6),
+            code:code,
             dbCode:"ahgh",
             owner:req.body.name,
             ready:false
@@ -32,7 +33,7 @@ router.get("/create",(req,res)=>{
     }).catch(err =>{
         res.json({message:err});
     });
-    res.json(savedRoom);
+    res.json({code:code});
     // var config = {
     //     databaseURL: "https://masseyhacks6.firebaseio.com",
     //     projectId: "masseyhacks6"
