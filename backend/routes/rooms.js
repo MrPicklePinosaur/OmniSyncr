@@ -12,7 +12,7 @@ function makeId(length) {
     }
     return result;
 }
-router.get("/create",async (req,res)=>{
+router.get("/create",(req,res)=>{
     const room = new Room(
         {
             code:makeId(6),
@@ -22,14 +22,14 @@ router.get("/create",async (req,res)=>{
 
         }
     );
-    const savedRoom = await room.save().then(data =>{
+    const savedRoom = room.save().then(data =>{
         res.json(data);
     }).catch(err =>{
         res.json({message:err});
     });
 
 });
-router.post("/join",async (req,res)=>{
+router.post("/join",(req,res)=>{
     console.log(req.body);
     const r = Room.findOne({code:req.body.code});
 
