@@ -81,22 +81,25 @@ function internalMessage(info){
 }
 
 // ======================================== Firebase functions =======================================
+var config = {
+    databaseURL: "https://masseyhacks6.firebaseio.com",
+    projectId: "masseyhacks6"
+};
+
 firebase.initializeApp(config);
 var db = firebase.firestore();
-function lobbyCreated(id){
-    
+function lobbyCreated(lobbyId, username){
+    db.collection("Rooms").doc(toString(lobbyId))
+    .onSnapshot(function(doc) {
+        console.log("Current data: ", doc.data());
+    });
 }
-
 
 // ======================================== Test Code =======================================
 console.log("Started");
+lobbyCreated("Any ID", "Noor");
+
 function make(){
-    var config = {
-        databaseURL: "https://masseyhacks6.firebaseio.com",
-        projectId: "masseyhacks6"
-    };
-    firebase.initializeApp(config);
-    var db = firebase.firestore();
     db.collection("Rooms").doc("Any ID").set({
         LastUpdate: new Date().getTime(),
         Members: [
