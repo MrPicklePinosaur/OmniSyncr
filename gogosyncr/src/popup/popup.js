@@ -26,12 +26,6 @@ const router = new VueRouter({
 		{ path: '*', component: NotFound }
 	],
 	
-	mounted: function() {
-		console.log('mounted');
-		axios.get('https://jsonplaceholder.typicode.com/posts')
-			.then(response => console.log(response));
-	
-	},
 	/*
 	routes: [
 		{
