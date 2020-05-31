@@ -17,7 +17,7 @@ function makeId(length) {
 router.get('/',(req,res) =>{
     res.send("We are on rooms");
 });
-router.get("/create",async (req,res)=>{
+router.post("/create",async (req,res)=>{
     const code = makeId(6);
     const room = new Room(
         {
