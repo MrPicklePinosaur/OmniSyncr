@@ -2,7 +2,7 @@
     <div>
         <h1>Main</h1>
 
-        <button type="button" class="btn btn-primary" @click="creatRoom">Create Room</button>
+        <button type="button" class="btn btn-primary" @click="createRoom">Create Room</button>
         <br>
         <button type="button" class="btn btn-primary" @click="onJoinRoomButtonSubmit">Join Room</button>
         <input type="text" class="form-control" placeholder="room code" v-model="joinRoomCode">
@@ -22,18 +22,12 @@ export default {
 
     methods: {
         createRoom: function() {
-            
-            //send request - save room info
-
-            //redirect to room page
+            this.$store.dispatch('createRoom');
         },
 
         onJoinRoomButtonSubmit: function() {
             console.log(`Trying to join room with code ${this.joinRoomCode}`);
-
-            //send request
-
-            //check if room was successfully joined
+            //dispatch the ting
 
             //redirect to room page
         },

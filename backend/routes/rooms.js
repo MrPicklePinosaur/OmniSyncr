@@ -16,9 +16,9 @@ router.get("/create",async (req,res)=>{
     const room = new Room(
         {
             code:makeId(6),
-            ws:"ahgh",
+            dbCode:"ahgh",
             owner:req.body.name,
-            members:{}
+            ready:false
 
         }
     );
@@ -32,22 +32,13 @@ router.get("/create",async (req,res)=>{
 router.post("/join",async (req,res)=>{
     console.log(req.body);
     const r = Room.findOne({code:req.body.code});
-    r.update({$push:{members:req.body.name}})
 
     r.exec(function (err, room) {
         if (err) return handleError(err);
         res.json(room);
     });
 });
-router.post("/ready",async (req,res)=>{
-    const r = Room.findOne({code:req.body.code});
-    if(req.body.name===r.owner){
-        r.ready = true;
-        //make firebase room
-    }
-    res.json({r.ready})
 
-})
 router.post("/getRoom")
 
 

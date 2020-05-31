@@ -7,7 +7,19 @@ export const store = new Vuex.Store({
     state: {
         server_url: 'http:localhost:3000',
         username: 'Daniel',
-        room: null
+        room_info: null,
+        /*room_info: {
+            "code": "lmaoxdcode",
+            "dbCode": "123securehash", //firestore
+            "owner": "melmao",
+        }*/
+        room_state: {
+            "members": [
+                "nithin", "daniel", "noor"
+            ],
+            "status": "paused",
+            "watched": 50.5
+        }
     },
     getters: {
 
@@ -18,14 +30,14 @@ export const store = new Vuex.Store({
         },
         
         setRoom: (state, payload) => {
-            state.room = payload; //copy the room object over
+            state.room_info = payload; //copy the room object over
         }
     },
     actions: {
 
         createRoom: (content) => { 
             axios.get(context.server_url+"/rooms/create")
-                .then(response => { //response: room object { code: string, dbCode: string, owner: string, members: string[]}
+                .then(response => { //response: room object { code: string, dbCode: string, owner: string}
                     context.commit('setRoom', response);
                 });
         },
@@ -38,7 +50,9 @@ export const store = new Vuex.Store({
                 .then(response => { //response: room object
 
                 });
-        }
+        },
+
+        //leaveRoom:
 
     }
 });
