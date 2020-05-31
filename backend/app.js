@@ -12,10 +12,8 @@ app.use(express.json());
 const port = 3000;
 
 //API
-const loginRoutes = require('./routes/login');
 const roomRoutes = require('./routes/rooms');
 //Routes
-app.use('/login',loginRoutes);
 app.use('/rooms',roomRoutes);
 app.get('/',(req,res) =>{
     res.send("We are on home");

@@ -4,9 +4,6 @@ const RoomSchema = mongoose.Schema({
     code:String,
     dbCode:String,
     owner:String,
-
-    members:[String]
-]
 });
 
-module.exports = mongoose.model("Users",RoomSchema);
+module.exports = mongoose.model("Rooms",RoomSchema);
