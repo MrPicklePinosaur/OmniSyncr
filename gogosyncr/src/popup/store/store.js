@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {router} from "../popup.js"
 
 Vue.use(Vuex);
 
@@ -58,6 +59,8 @@ export const store = new Vuex.Store({
                         "username": context.state.username
                     }
                 });
+
+                router.push('/popup/popup.html/room');
             });
 
         },
@@ -77,6 +80,7 @@ export const store = new Vuex.Store({
                 if (data != null) {
                     context.commit('setRoom', data);
                     //also redirect to room page
+                    router.push('/popup/popup.html/room');
                 } else {
                     //tell user that its an invalid room
                     console.log('invalid code');

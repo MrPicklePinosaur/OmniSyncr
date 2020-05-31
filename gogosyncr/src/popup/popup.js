@@ -19,7 +19,7 @@ Vue.use(VueRouter);
 
 window.axios = require('axios');
 
-const router = new VueRouter({
+export const router = new VueRouter({
 	
 	routes: [
 		{ path: '/popup/popup.html', component: Main},
