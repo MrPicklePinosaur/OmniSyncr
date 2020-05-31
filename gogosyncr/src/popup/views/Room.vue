@@ -13,13 +13,13 @@
         </div-->
 
 
-        <!--div class="card">
+        <div class="card">
             <ul class="list-group list-group-flush">
 
-                <li class="list-group-item" v-for="(member,i) in room_info.members" v-bind:key="i">{{member}}</li>
+                <li class="list-group-item" v-for="(member,i) in members" v-bind:key="i">{{member}}</li>
 
             </ul>
-        </div-->
+        </div>
 
         <button type="button" class="btn btn-warning">Leave room</button>
 
@@ -52,6 +52,9 @@ export default {
     computed: {
         room_info: function() {
             return this.$store.state.room_info;
+        },
+        members: function() {
+            return this.$store.state.members;
         }
     },
 

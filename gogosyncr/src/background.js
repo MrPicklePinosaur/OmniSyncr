@@ -1,3 +1,60 @@
+
+// test stuff
+console.log("Started")
+//Daniel shitzo
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+
+    var evt_type = request.event;
+
+    if (evt_type == "onload") {
+        //send stored state back to popup
+        console.log('LOADED POPUP');
+        sendResponse({"message": "hello popup!"});
+    } else if (evt_type == "onunload") {
+        console.log(request.state);
+    } else if (evt_type == "createRoom") {
+        console.log(request.payload.lobbyId);
+        //lobbyCreated(request.payload.lobbyId,request.payload.username);
+    } else {
+        console.log(`invalid event type: ${evt_type}`);
+    }
+    
+
+});
+
+
+//Daniel shitzo end
+var contextMenus = {};
+contextMenus.createCounterString = 
+    chrome.contextMenus.create(
+        {"title":"play",
+        "contexts" : ["all"]
+        },
+        function (){
+            if(chrome.runtime.lastError){
+                console.error(chrome.runtime.lastError.message);
+            }
+        }
+    );
+chrome.contextMenus.onClicked.addListener(contextMenuHandler);
+
+// gets to call the other functions
+var alreadyReady = false;
+function contextMenuHandler(info, tab){
+    if (!alreadyReady){
+        videoSetup();
+        alreadyReady = true
+    }
+
+    //videoFunction(".load()");
+    //videoFunction(".play()");
+    //videoFunction(".pause()");
+    //videoFunction(".currentTime = 95"); // in seconds
+    
+    //videoProperty(".currentTime")
+}
+
 // ======================================== global functions =======================================
 if (!String.prototype.format) { 
     String.prototype.format = function(...args) {

@@ -33,15 +33,33 @@ const router = new VueRouter({
 
 /* eslint-disable no-new */
 new Vue({
-  
-  data: {
 
-  },
+	data: {
 
-  computed: {
+	},
 
-  },
-  router,
-  store: store,
-  render: h => h(App)
+	computed: {
+
+	},
+	router,
+	store: store,
+	render: h => h(App)
 }).$mount('#app');
+
+//when popup window opens, ask background.js for stored state
+window.onload = function() {
+
+	this.chrome.runtime.sendMessage({"event":"onload"}, (response) => {
+		console.log(response);
+		//response is the stored state
+	});
+} 
+
+//when popup window closes, save current state on background.js
+window.onunload = function() {
+
+	this.chrome.runtime.sendMessage({
+		"event":"onunload",
+		"state": this.$store.state
+	});
+}
