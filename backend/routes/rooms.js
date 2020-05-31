@@ -43,12 +43,13 @@ router.post("/create",async (req,res)=>{
     }
     var db = firebase.firestore();
     const id=Math.floor(Math.Random()*1000000);
+    console.log(id);
     db.collection("Rooms").doc(id.toString()).set({
         LastUpdate: new Date().getTime(),
         PartyLeader: req.body.name,
         Status: "Paused",
         Watched: 0,
-        ID: 178912012
+        ID: id
     });
 
 
