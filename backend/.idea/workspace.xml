@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ebe106c6-07ce-4ec6-adb3-e9673375ee03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Room.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Room.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/rooms.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gogosyncr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gogosyncr/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -90,7 +89,7 @@
       <workItem from="1590915110504" duration="174000" />
       <workItem from="1590915677281" duration="136000" />
       <workItem from="1590915832150" duration="5142000" />
-      <workItem from="1590933677088" duration="2580000" />
+      <workItem from="1590933677088" duration="3396000" />
     </task>
     <servers />
   </component>
