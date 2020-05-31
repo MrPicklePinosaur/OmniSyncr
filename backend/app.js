@@ -1,9 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const WebSocket = require('ws');
 const http = require('http');
 require('dotenv/config');
 const app = express();
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //WebSocket
@@ -18,13 +20,6 @@ wss.on('connection',function connection(ws){
     })
 
 });
-
-
-
-
-
-
-
 
 //API
 const loginRoutes = require('./routes/login');
