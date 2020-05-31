@@ -32,7 +32,21 @@ router.get("/create",(req,res)=>{
     }).catch(err =>{
         res.json({message:err});
     });
-
+    var config = {
+        databaseURL: "https://masseyhacks6.firebaseio.com",
+        projectId: "masseyhacks6"
+    };
+    firebase.initializeApp(config);
+    var db = firebase.firestore();
+    db.collection("Rooms").doc("Any ID").set({
+        LastUpdate: new Date().getTime(),
+        Members: [
+        ],
+        PartyLeader: req.body.name,
+        Status: "Paused",
+        Watched: 0,
+        Connected: 0,
+    });
 
 
 });
