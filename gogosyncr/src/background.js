@@ -1,4 +1,11 @@
 
+var state = {
+    server_url: 'http://134.209.168.108:3000',
+    username: null,
+    room_info: null,
+    members: []
+};
+
 // test stuff
 console.log("Started")
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -7,13 +14,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (evt_type == "onload") {
         //send stored state back to popup
         console.log('LOADED POPUP');
-        sendResponse({"message": "hello popup!"});
+        sendResponse({"state": state});
     } else if (evt_type == "onunload") {
         console.log(request.state);
     } else if (evt_type == "createRoom") {
         console.log(request.payload.lobbyId);
         lobbyCreated(request.payload.lobbyId, request.payload.username);
-    } else {
+    } else if (evt_type == "writeState") {
+        state = request.state;
+        console.log(state);
+    }else {
         console.log(`invalid event type: ${evt_type}`);
     }
 });

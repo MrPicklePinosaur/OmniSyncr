@@ -9,6 +9,7 @@ import Main from './views/Main.vue'
 import Test from './views/Test.vue'
 import Room from './views/Room.vue'
 import NotFound from './views/NotFound.vue'
+import Account from './views/Account.vue'
 
 //styles
 import 'bootstrap/dist/css/bootstrap.css'
@@ -25,6 +26,7 @@ export const router = new VueRouter({
 		{ path: '/popup/popup.html', component: Main},
 		{ path: '/popup/popup.html/test', component: Test},
 		{ path: '/popup/popup.html/room', component: Room },
+		{ path: '/popup/popup.html/account', component: Account },
 		{ path: '*', component: NotFound }
 	],
 	
@@ -50,11 +52,21 @@ new Vue({
 window.onload = function() {
 
 	this.chrome.runtime.sendMessage({"event":"onload"}, (response) => {
+		console.log("read state:");
 		console.log(response);
 		//response is the stored state
+
+		//check if user has inputed username yet
+		console.log(`current username ${store.state.username}`);
+		if (store.state.username==null) { //push them towards account page
+			router.push('/popup/popup.html/account');
+		}
 	});
+
+
 } 
 
+/*
 //when popup window closes, save current state on background.js
 window.onunload = function() {
 
@@ -63,3 +75,4 @@ window.onunload = function() {
 		"state": this.$store.state
 	});
 }
+*/
