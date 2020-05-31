@@ -17,7 +17,7 @@ function makeId(length) {
 router.get('/',(req,res) =>{
     res.send("We are on rooms");
 });
-router.get("/create",(req,res)=>{
+router.get("/create",async (req,res)=>{
     const code = makeId(6);
     const room = new Room(
         {
@@ -28,12 +28,11 @@ router.get("/create",(req,res)=>{
 
         }
     );
-    const savedRoom = room.save().then(data =>{
+    const savedRoom = await room.save().then(data =>{
         res.json(data);
     }).catch(err =>{
         res.json({message:err});
     });
-    res.json({code:code});
     // var config = {
     //     databaseURL: "https://masseyhacks6.firebaseio.com",
     //     projectId: "masseyhacks6"
@@ -52,7 +51,7 @@ router.get("/create",(req,res)=>{
 
 
 });
-router.post("/join",(req,res)=>{
+router.post("/join",async (req,res)=>{
     console.log(req.body);
     const r = Room.findOne({code:req.body.code});
 
