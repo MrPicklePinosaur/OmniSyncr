@@ -4,9 +4,20 @@
 
         <p v-text="roomCode"></p>
 
-        <ul>
-            <li v-for="(member,i) in members" v-bind:key="i">{{member.name}}</li>
-        </ul>
+        <div>
+            <p>currently watching:</p>
+            <p v-if="currentlyWatching!=null" v-text="currentlyWatching"></p>
+            <p v-else>Nothin :(</p>
+        </div>
+
+
+        <div class="card">
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item" v-for="(member,i) in members" v-bind:key="i">{{member.name}}</li>
+
+            </ul>
+        </div>
 
         <button type="button" class="btn btn-warning">Leave room</button>
 
@@ -26,17 +37,18 @@ export default {
 
     data: function() {
         return {
-            roomCode: 'Room code',
-            members: [
-                {
-                    name: 'Nithin',
-                    privilege: 'viewer',
-                },
-                {
-                    name: 'Noor',
-                    privilege: 'owner',
-                },
-            ],
+            
+        }
+    },
+
+    methods: {
+
+        leaveRoom: function() {
+
+            //send request
+
+            //redirect
+
         }
     }
 }

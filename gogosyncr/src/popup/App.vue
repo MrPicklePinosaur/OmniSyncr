@@ -9,15 +9,17 @@
 
 			<ul class="navbar-nav">
 
-				<li><router-link to="/">Home</router-link></li>
-				<li><router-link to="/test">Test</router-link></li>
-				<li><router-link to="/room">Room</router-link></li>
+				<li><router-link to="/popup/popup.html">Home</router-link></li>
+				<li><router-link to="/popup/popup.html/test">Test</router-link></li>
+				<li><router-link to="/popup/popup.html/room">Room</router-link></li>
 
 			</ul>
 
 		</nav>
 
 		<router-view></router-view>
+
+		<div></div>
 
 	</div>
 </template>
