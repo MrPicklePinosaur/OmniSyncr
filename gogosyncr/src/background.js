@@ -128,21 +128,27 @@ function internalMessage(info){
             if (isPlaying && isLeader){
                 videoProperty(".currentTime")
                 waitedCommand = "Paused";
+                isPlaying = false;
             }
 
         }else if (waitingOn){
-            console.log(waitingOn, info);
-            db.collection("Rooms").doc(toString(values["ID"])).set({        
-                LastUpdate: new Date().getTime(),
-                PartyLeader: "Noor",
-                Status: waitedCommand,
-                Watched: info,
-                ID: values["ID"]
-            });
+            console.log(waitingOn, info, values["ID"]);
+            var room = db.collection("Rooms").doc(values["ID"].toString());
 
-            waitedCommand = null;
-            waitingOn = null;
-            console.log("All done");
+            return room.update({
+                LastUpdate: new Date().getTime(),
+                Status: waitedCommand,
+                Watched: info
+            })
+            .then(function() {
+                waitedCommand = null;
+                waitingOn = null;
+                console.log("Room successfully updated!");
+            })
+            .catch(function(error) {
+                // The document probably doesn't exist.
+                console.error("Error updating Room: ", error);
+            });
         }
     }catch(e){
         console.log(e);
@@ -194,7 +200,7 @@ function lobbyCreated(lobbyId, username){
                                     }
                                     isPlaying = true;                                    
                                     console.log("Playing Video!");
-                                    videoFunction(".currentTime = 0") //.format(newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000));
+                                    videoFunction(".currentTime = {0}".format(newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000));
                                     videoFunction(".play()");
                                     
                                     console.log("Enjoy watching?", newItems["Watched"] + ((new Date().getTime()) - newItems["LastUpdate"])/1000) ;
