@@ -53,12 +53,25 @@ function videoFunction(order){
     });
 }
 
+function videoProperty(info){
+
+}
+
+function videoSetup(){
+
+}
 
 function contextMenuHandler(info, tab){
-    //console.log(chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    //    chrome.tabs.executeScript(tabs[0].id, {code: 'document.getElementsByTagName("video")[0].currentTime'})}));
+    
+    (chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.executeScript(tabs[0].id, {code: ''})}));
 
     //videoFunction(".play()");
     //videoFunction(".pause()");
     //videoFunction(".currentTime = 95"); // in seconds
+}
+
+chrome.runtime.onMessage.addListener(internalMessage);
+function internalMessage(info){
+    console.log(info);
 }
