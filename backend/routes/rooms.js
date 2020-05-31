@@ -28,7 +28,7 @@ router.get("/create",async (req,res)=>{
 
         }
     );
-    const savedRoom = await room.save().then(data =>{
+    const savedRoom = room.save().then(data =>{
         res.json(data);
     }).catch(err =>{
         res.json({message:err});
