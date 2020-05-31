@@ -42,13 +42,14 @@ router.post("/create",async (req,res)=>{
         firebase.initializeApp(config);
     }
     var db = firebase.firestore();
-    db.collection("Rooms").add({
+    const id=Math.floor(Math.Random()*1000000);
+    db.collection("Rooms").doc(id.toString()).set({
         LastUpdate: new Date().getTime(),
         PartyLeader: req.body.name,
         Status: "Paused",
         Watched: 0,
-        ID: Math.floor(Math.random() * 1000000)
-});
+        ID: 178912012
+    });
 
 
 });

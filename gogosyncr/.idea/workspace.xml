@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9012da2-1902-496a-b9c6-02b415adaee4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gogosyncr.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popup/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popup/firebase-app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popup/firebase-auth.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popup/firebase-firestore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popup/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup/views/Main.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/popup/views/Room.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/popup/views/Room.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590920913400</updated>
-      <workItem from="1590920914711" duration="4065000" />
+      <workItem from="1590920914711" duration="4447000" />
     </task>
     <servers />
   </component>

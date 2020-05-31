@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebe106c6-07ce-4ec6-adb3-e9673375ee03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/gogosyncr.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gogosyncr/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gogosyncr/src/popup/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/firebase-app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/firebase-auth.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/firebase-firestore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gogosyncr/src/popup/views/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gogosyncr/src/popup/views/Main.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/rooms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gogosyncr/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gogosyncr/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,6 +89,7 @@
       <workItem from="1590915110504" duration="174000" />
       <workItem from="1590915677281" duration="136000" />
       <workItem from="1590915832150" duration="5142000" />
+      <workItem from="1590933677088" duration="468000" />
     </task>
     <servers />
   </component>
