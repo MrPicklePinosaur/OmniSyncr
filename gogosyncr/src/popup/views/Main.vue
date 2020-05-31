@@ -3,11 +3,12 @@
 
         <button type="button" class="btn btn-primary" @click="createRoom">Create Room</button>
         
-        <p> - OR - </p>
+        <p style="padding-top:15px"> - OR - </p>
 
         <div class="container">
             <div class="col"><button type="button" class="btn btn-primary" @click="onJoinRoomButtonSubmit">Join Room</button></div>
-            <div class="col"><input type="text" class="form-control" placeholder="room code" v-model="joinRoomCode"></div>
+
+            <div class="col" style="padding-top:15px"><input type="text" class="form-control" placeholder="room code" v-model="joinRoomCode"></div>
         </div>
         
     </div>
