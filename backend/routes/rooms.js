@@ -33,22 +33,20 @@ router.get("/create",async (req,res)=>{
     }).catch(err =>{
         res.json({message:err});
     });
-
-    // var config = {
-    //     databaseURL: "https://masseyhacks6.firebaseio.com",
-    //     projectId: "masseyhacks6"
-    // };
-    // firebase.initializeApp(config);
-    // var db = firebase.firestore();
-    // db.collection("Rooms").doc("Any ID").set({
-    //     LastUpdate: new Date().getTime(),
-    //     Members: [
-    //     ],
-    //     PartyLeader: req.body.name,
-    //     Status: "Paused",
-    //     Watched: 0,
-    //     Connected: 0,
-    // });
+    console.log("firebase");
+    var config = {
+        databaseURL: "https://masseyhacks6.firebaseio.com",
+        projectId: "masseyhacks6"
+    };
+    firebase.initializeApp(config);
+    var db = firebase.firestore();
+    db.collection("Rooms").add({
+        LastUpdate: new Date().getTime(),
+        PartyLeader: req.body.name,
+        Status: "Paused",
+        Watched: 0,
+        ID: Math.random()*100000
+    });
 
 
 });
