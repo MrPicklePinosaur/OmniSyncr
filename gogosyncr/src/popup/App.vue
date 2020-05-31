@@ -1,21 +1,23 @@
 <template>
 	<div style="width: 250px; height: 400px;">
 		
-		<div class="container">
+		<div class="d-flex justify-content-center">
 			<h1>gogoSyncr</h1>
 		</div>
+		<hr>
 
-		<nav class="navbar">
 
-			<ul class="navbar-nav">
+		<div class="navbar">
 
-				<li><router-link to="/popup/popup.html">Home</router-link></li>
-				<li><router-link to="/popup/popup.html/test">Test</router-link></li>
-				<li><router-link to="/popup/popup.html/room">Room</router-link></li>
+			<div>
 
-			</ul>
+				<router-link to="/popup/popup.html">Home</router-link>
+				<router-link to="/popup/popup.html/test">Test</router-link>
+				<router-link to="/popup/popup.html/room">Room</router-link>
 
-		</nav>
+			</div>
+
+		</div>
 
 		<router-view></router-view>
 

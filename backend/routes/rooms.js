@@ -13,10 +13,15 @@ function makeId(length) {
     }
     return result;
 }
-router.get("/create",(req,res)=>{
+
+router.get('/',(req,res) =>{
+    res.send("We are on rooms");
+});
+router.post("/create",async (req,res)=>{
+    const code = makeId(6);
     const room = new Room(
         {
-            code:makeId(6),
+            code:code,
             dbCode:"ahgh",
             owner:req.body.name,
             ready:false
@@ -28,30 +33,31 @@ router.get("/create",(req,res)=>{
     }).catch(err =>{
         res.json({message:err});
     });
+    console.log(req.body.name);
     var config = {
         databaseURL: "https://masseyhacks6.firebaseio.com",
         projectId: "masseyhacks6"
     };
-    firebase.initializeApp(config);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
     var db = firebase.firestore();
-    db.collection("Rooms").doc("Any ID").set({
+    db.collection("Rooms").add({
         LastUpdate: new Date().getTime(),
-        Members: [
-        ],
         PartyLeader: req.body.name,
         Status: "Paused",
         Watched: 0,
-        Connected: 0,
-    });
+        ID: Math.floor(Math.random() * 1000000)
+});
 
 
 });
-router.post("/join",(req,res)=>{
+router.post("/join",async (req,res)=>{
     console.log(req.body);
     const r = Room.findOne({code:req.body.code});
 
     r.exec(function (err, room) {
-        if (err) return handleError(err);
+        if (err) return res.json({});
         res.json(room);
     });
 });

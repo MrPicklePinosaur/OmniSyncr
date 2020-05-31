@@ -13,9 +13,6 @@
   },
   "background": {
     "scripts": [
-      "popup/firebase-app.js", 
-      "popup/firebase-auth.js", 
-      "popup/firebase-firestore.js",
       "background.js"
     ],
     "persistent" : false
