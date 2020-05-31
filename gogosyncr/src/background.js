@@ -209,7 +209,7 @@ function lobbyCreated(lobbyId, username){
                             }else if (key == "Link" && !isLeader && newItems[key] != "blank"){
                                 // open that link
                                 console.log("Going to new url!")
-                                //chrome.tabs.create({"url": newItems[key]});
+                                chrome.tabs.create({"url": newItems[key]});
                             
                             }else if (key == "PartyLeader"){
                                 if (username == newItems[key]){
