@@ -13,7 +13,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         console.log(request.state);
     } else if (evt_type == "createRoom") {
         console.log(request.payload.lobbyId);
-        //lobbyCreated(request.payload.lobbyId,request.payload.username);
+        lobbyCreated(request.payload.lobbyId,request.payload.username);
     } else {
         console.log(`invalid event type: ${evt_type}`);
     }
