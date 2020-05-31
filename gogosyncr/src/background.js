@@ -1,3 +1,4 @@
+
 // test stuff
 console.log("Started")
 //Daniel shitzo
@@ -136,4 +137,70 @@ function internalMessage(info){
     }
 }
 
-// ======================================== socket functions =======================================
+// ======================================== Firebase functions =======================================
+var config = {
+    databaseURL: "https://masseyhacks6.firebaseio.com",
+    projectId: "masseyhacks6"
+};
+
+firebase.initializeApp(config);
+var db = firebase.firestore();
+function lobbyCreated(lobbyId, username){
+    db.collection("Rooms").doc(toString(lobbyId))
+    .onSnapshot(function(doc) {
+        console.log("Current data: ", doc.data());
+    });
+}
+
+// ======================================== Test Code =======================================
+console.log("Started");
+lobbyCreated("Any ID", "Noor");
+
+function make(){
+    db.collection("Rooms").doc("Any ID").set({
+        LastUpdate: new Date().getTime(),
+        Members: [
+            "Nithin",
+            "Daniel",
+            "Noor"
+        ],
+        PartyLeader: "Noor",
+        Status: "Paused",
+        Watched: 0,
+        Connected: 0,
+    });    
+}
+
+var contextMenus = {};
+contextMenus.createCounterString = 
+    chrome.contextMenus.create(
+        {"title":"play",
+        "contexts" : ["all"],
+        "id": "pleaseworkman"
+        },
+        function (){
+            if(chrome.runtime.lastError){
+                console.error(chrome.runtime.lastError.message);
+            }
+        }
+    );
+chrome.contextMenus.onClicked.addListener(contextMenuHandler);
+
+// gets to call the other functions
+var alreadyReady = false;
+function contextMenuHandler(info, tab){
+    
+
+    /*if (!alreadyReady){
+        videoSetup();
+        alreadyReady = true
+    }
+    */
+
+    //videoFunction(".load()");
+    //videoFunction(".play()");
+    //videoFunction(".pause()");
+    //videoFunction(".currentTime = 95"); // in seconds
+    
+    //videoProperty(".currentTime")
+}
