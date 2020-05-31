@@ -2,9 +2,8 @@
     <div>
 
     <div v-if="room_info!=null">
-        <h1>Room</h1>
 
-        <p v-text="room_info.code"></p>
+        <p>Room Code: {{room_info.code}}</p>
 
         <!--div>
             <p>currently watching:</p>
@@ -21,7 +20,7 @@
             </ul>
         </div>
 
-        <button type="button" class="btn btn-warning">Leave room</button>
+        <button type="button" class="btn btn-warning" @click="leaveRoom">Leave room</button>
 
     </div>
 
@@ -61,7 +60,7 @@ export default {
     methods: {
 
         leaveRoom: function() {
-
+            this.$router.push('/popup/popup.html');
             //send request
 
             //redirect

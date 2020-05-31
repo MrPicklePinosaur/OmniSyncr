@@ -1,7 +1,3 @@
-import "popup/firebase-app.js"
-import "popup/firebase-auth.js"
-import "popup/firebase-firestore.js"
-
 
 // test stuff
 console.log("Started")

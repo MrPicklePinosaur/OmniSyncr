@@ -1,10 +1,10 @@
 <template>
-	<div style="width: 250px; height: 400px;">
+	<div style="width: 250px; height: 400px; margin: 5px">
 		
-		<div class="d-flex justify-content-center">
-			<h1>gogoSyncr</h1>
+		<div class="d-flex justify-content-center" style="background-color: lightgrey;">
+			<h1 style="margin-top: 10px; margin-bottom: 10px">VidSyncr</h1>
 		</div>
-		<hr>
+
 
 
 		<div class="navbar">
