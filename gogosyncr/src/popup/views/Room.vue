@@ -60,7 +60,7 @@ export default {
             return this.$store.state.room_info;
         },
         members: function() {
-            return this.$store.state.members;
+            return this.$store.state.room_info.members;
         }
     },
 
@@ -75,7 +75,9 @@ export default {
         },
 
         refreshRoom: function() {
-            this.$store.dispatch('refreshRoom',{"code": this.$store.state.room_info.lobbyId});
+            console.log(`refresh room at:`)
+            console.log(this.$store.state.room_info);
+            this.$store.dispatch('refreshRoom',{"code": this.$store.state.room_info.code});
         }
     }
 }
