@@ -79,6 +79,7 @@ export const store = new Vuex.Store({
             //send code we entered to the server and check to see if we successfully joined room
             console.log(context.state.server_url+"/rooms/join");
             axios.post(context.state.server_url+"/rooms/join", {
+                "name": context.state.username,
                 "code": payload.code
             })
             .then(response => { //response: room object OR null
@@ -111,23 +112,17 @@ export const store = new Vuex.Store({
 
         refreshRoom: (context, payload) => { 
 
-            axios.post(context.state.server_url+"/rooms/getroom", {
+            axios.post(context.state.server_url+"/rooms/getRoom", {
                 "code": payload.code
             })
             .then(response => {
                 var data = response.data;
 
+                console.log('refresh room data:');
+                console.log(data)
+
                 context.commit('setRoom', data);
                 //also redirect to room page
-
-                chrome.runtime.sendMessage({
-                    "event": "createRoom",
-                    "payload": {
-                        "lobbyId": context.state.room_info.dbCode,
-                        "username": context.state.username
-                    }
-                });
-                
 
             });
         },
