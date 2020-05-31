@@ -4,9 +4,20 @@
 
         <p v-text="roomCode"></p>
 
-        <ul>
-            <li v-for="(member,i) in members" v-bind:key="i">{{member.name}}</li>
-        </ul>
+        <div>
+            <p>currently watching:</p>
+            <h4 v-text="currentlyWatching"></h4>
+        </div>
+
+
+        <div class="card">
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item" v-for="(member,i) in members" v-bind:key="i">{{member.name}}</li>
+
+            </ul>
+        </div>
+
 
         <button type="button" class="btn btn-warning">Leave room</button>
 
@@ -27,6 +38,7 @@ export default {
     data: function() {
         return {
             roomCode: 'Room code',
+            currentlyWatching: 'YESTERDAY WO UTATTE EPISODE 9 ENGLISH SUBBED',
             members: [
                 {
                     name: 'Nithin',
@@ -37,6 +49,12 @@ export default {
                     privilege: 'owner',
                 },
             ],
+        }
+    },
+
+    methods: {
+        leaveRoom: function() {
+            
         }
     }
 }
