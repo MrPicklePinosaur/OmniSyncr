@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (evt_type == "onload") {
         //send stored state back to popup
         console.log('LOADED POPUP');
-        sendResponse({"state": state});
+        sendResponse({"state":state});
     } else if (evt_type == "onunload") {
         console.log(request.state);
     } else if (evt_type == "createRoom") {

@@ -53,12 +53,15 @@ window.onload = function() {
 
 	this.chrome.runtime.sendMessage({"event":"onload"}, (response) => {
 		console.log("read state:");
-		console.log(response);
 		//response is the stored state
+		
+		console.log(response.state);
+		store.commit('readState',response.state);
 
 		//check if user has inputed username yet
+		console.log(store.state);
 		console.log(`current username ${store.state.username}`);
-		if (store.state.username==null) { //push them towards account page
+		if (response.state.username==null) { //push them towards account page
 			router.push('/popup/popup.html/account');
 		}
 	});

@@ -6,6 +6,8 @@ Vue.use(Vuex);
 
 //write current state to background.js
 function writeState() {
+    console.log('writing state')
+    console.log(store.state)
     chrome.runtime.sendMessage({
         "event":"writeState",
         "state": store.state
@@ -24,6 +26,8 @@ export const store = new Vuex.Store({
     },
     mutations: {
         readState: (state, payload) => { //read state from background.js on popup init
+            console.log(`payload`);
+            console.log(payload)
             state = payload;
         },
         
@@ -42,6 +46,7 @@ export const store = new Vuex.Store({
         setUsername: (state, payload) => {
             var username = payload.username;
             state.username = username;
+            console.log(username);
             writeState();
         }
     },
@@ -85,6 +90,16 @@ export const store = new Vuex.Store({
                     context.commit('setRoom', data);
                     //also redirect to room page
                     router.push('/popup/popup.html/room');
+
+                    chrome.runtime.sendMessage({
+                        "event": "createRoom",
+                        "payload": {
+                            "lobbyId": context.state.room_info.dbCode,
+                            "username": context.state.username
+                        }
+                    });
+
+                    
                 } else {
                     //tell user that its an invalid room
                     console.log('invalid code');
