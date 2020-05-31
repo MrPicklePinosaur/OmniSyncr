@@ -1,11 +1,9 @@
 <template>
-    <div>
+    <div class="d-flex justify-content-center">
 
         <input type="text" class="form-control" placeholder="nickname" v-model="nameField">
-        <div style="padding-left:65px;padding-top:20px">
-            <button type="button" class="btn btn-primary" @click="onCreateAccountButtonClicked">Begin!</button>
-
-        </div>
+        
+        <button type="button" class="btn btn-primary" @click="onCreateAccountButtonClicked">Begin!</button>
 
 
     </div>

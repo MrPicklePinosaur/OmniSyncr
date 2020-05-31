@@ -1,9 +1,9 @@
 <template>
-	<div style="width: 300px; height: 350px; margin: 0px">
+	<div style="width: 300px; height: 350px; margin: 5px">
 
 		<div class="d-flex justify-content-center" style="background-color: lightgrey;">
 
-			<h1 style="margin-top: 10px; margin-bottom: 10px">VidSyncr</h1>
+			<h1 style="margin-top: 10px; margin-bottom: 10px">omniSyncr</h1>
 		</div>
 		<div style="height: 30px;">
         		</div>
