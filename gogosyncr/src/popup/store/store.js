@@ -45,7 +45,9 @@ export const store = new Vuex.Store({
         createRoom: context => { 
             console.log(context.state.server_url+"/rooms/create");
             
-            axios.get(context.state.server_url+"/rooms/create") //response: room object { code: string, dbCode: string, owner: string}
+            axios.post(context.state.server_url+"/rooms/create", {
+                "name": context.state.username
+            }) //response: room object { code: string, dbCode: string, owner: string}
             .then(response => {
                 context.commit('setRoom', response.data)
 

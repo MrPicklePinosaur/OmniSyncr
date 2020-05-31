@@ -1,3 +1,7 @@
+import "popup/firebase-app.js"
+import "popup/firebase-auth.js"
+import "popup/firebase-firestore.js"
+
 
 // test stuff
 console.log("Started")
@@ -25,35 +29,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 
 //Daniel shitzo end
-var contextMenus = {};
-contextMenus.createCounterString = 
-    chrome.contextMenus.create(
-        {"title":"play",
-        "contexts" : ["all"]
-        },
-        function (){
-            if(chrome.runtime.lastError){
-                console.error(chrome.runtime.lastError.message);
-            }
-        }
-    );
-chrome.contextMenus.onClicked.addListener(contextMenuHandler);
 
-// gets to call the other functions
-var alreadyReady = false;
-function contextMenuHandler(info, tab){
-    if (!alreadyReady){
-        videoSetup();
-        alreadyReady = true
-    }
-
-    //videoFunction(".load()");
-    //videoFunction(".play()");
-    //videoFunction(".pause()");
-    //videoFunction(".currentTime = 95"); // in seconds
-    
-    //videoProperty(".currentTime")
-}
 
 // ======================================== global functions =======================================
 if (!String.prototype.format) { 
