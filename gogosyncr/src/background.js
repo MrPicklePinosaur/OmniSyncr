@@ -2,7 +2,6 @@
 console.log("Started")
 //Daniel shitzo
 
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     var evt_type = request.event;
@@ -12,8 +11,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         console.log('LOADED POPUP');
         sendResponse({"message": "hello popup!"});
     } else if (evt_type == "onunload") {
-        
         console.log(request.state);
+    } else if (evt_type == "createRoom") {
+        console.log(request.payload.lobbyId);
+        //lobbyCreated(request.payload.lobbyId,request.payload.username);
     } else {
         console.log(`invalid event type: ${evt_type}`);
     }

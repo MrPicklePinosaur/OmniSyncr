@@ -1,11 +1,14 @@
 <template>
-    <div>
-        <h1>Main</h1>
+    <div class="container" style="text-align: center">
 
         <button type="button" class="btn btn-primary" @click="createRoom">Create Room</button>
-        <br>
-        <button type="button" class="btn btn-primary" @click="onJoinRoomButtonSubmit">Join Room</button>
-        <input type="text" class="form-control" placeholder="room code" v-model="joinRoomCode">
+        
+        <p> - OR - </p>
+
+        <div class="container">
+            <div class="col"><button type="button" class="btn btn-primary" @click="onJoinRoomButtonSubmit">Join Room</button></div>
+            <div class="col"><input type="text" class="form-control" placeholder="room code" v-model="joinRoomCode"></div>
+        </div>
         
     </div>
 </template>
