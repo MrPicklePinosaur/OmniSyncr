@@ -16,7 +16,5 @@
       "background.js"
     ]
   },
-  "permissions": [
-    "http://*/*", "https://*/*", "http://localhost/*"
-  ]
+  "permissions": ["activeTab", "storage","tabs", "http://*/*", "https://*/*","http://localhost/3000"]
 }
