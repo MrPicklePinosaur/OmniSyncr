@@ -16,7 +16,10 @@ router.get("/create",async (req,res)=>{
     const room = new Room(
         {
             code:makeId(6),
-            ws:"ahgh"
+            dbCode:"ahgh",
+            owner:req.body.name,
+            ready:false
+
         }
     );
     const savedRoom = await room.save().then(data =>{
@@ -26,14 +29,17 @@ router.get("/create",async (req,res)=>{
     });
 
 });
-router.post("/join",(req,res)=>{
+router.post("/join",async (req,res)=>{
     console.log(req.body);
-    const r = Room.findOne({'code':req.body.code});
+    const r = Room.findOne({code:req.body.code});
+
     r.exec(function (err, room) {
         if (err) return handleError(err);
-        // Prints "Space Ghost is a talk show host."
         res.json(room);
     });
-
 });
+
+router.post("/getRoom")
+
+
 module.exports = router;

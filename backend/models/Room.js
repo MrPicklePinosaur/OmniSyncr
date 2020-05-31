@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const RoomSchema = mongoose.Schema({
     code:String,
-    ws:String,
+    dbCode:String,
+    owner:String,
 });
-module.exports = mongoose.model("Users",RoomSchema);
+
+module.exports = mongoose.model("Rooms",RoomSchema);
