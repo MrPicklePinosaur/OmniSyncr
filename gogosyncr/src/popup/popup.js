@@ -28,7 +28,6 @@ const router = new VueRouter({
 		{ path: '*', component: NotFound }
 	],
 	
-	store: store,
 	mode: 'history'
 });
 
@@ -43,5 +42,6 @@ new Vue({
 
   },
   router,
+  store: store,
   render: h => h(App)
 }).$mount('#app');
